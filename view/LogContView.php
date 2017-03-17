@@ -117,6 +117,9 @@ class LogContView
      */
     public function getData()
     {
+        loggHeader("Accessing data from database");
+        loggThis("Data access",null, true);
+        $this->logModel()->logToDB();
         $dataFromDB = $this->getLogModel()->getDataFromDB();
         $result = "";
         foreach ($dataFromDB as $n => $value) {
@@ -178,6 +181,8 @@ class LogContView
      * Destroys the sessions and then redirecting the user to the main page.
      */
     public function doLogout(){
+        loggThis("Logout user");
+        $this->logModel()->logToDB();
         session_destroy();
         return header("Location: ?");
     }
