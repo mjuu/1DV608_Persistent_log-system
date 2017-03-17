@@ -90,19 +90,30 @@ class LoginView{
      * returned the correct error message to the login view.
      */
     public function  doLogin(){
+        loggHeader("Login");
 
         $message='';
         if(!$this->wantToLogin()==true ){
             $message="";
         }
         elseif($this->wantToLogin()==true && $this->getUsername()==false || $this->getUsername()==''){
-            $message="Empty username";
+            $message="Wrong username and pass";
+            loggThis("Empty username");
+            $this->logModel()->logToDB();
         }elseif($this->wantToLogin()==true &&$this->getUsername()==''){
-            $message="Wrong username";
+            $message="Wrong username and pass";
+            loggThis("Wrong username");
+            $this->logModel()->logToDB();
+
         }elseif($this->getPassword()==false || $this->getPassword()==''){
-            $message="Wrong password";
+            $message="Wrong username and pass";
+            loggThis("Wrong password");
+            $this->logModel()->logToDB();
+
         }else{
             $message = "Wrong username and pass";
+            loggThis("Everything is wrong, go register a new account!", new \Exception("Login fail"),false);
+            $this->logModel()->logToDB();
         }
         echo $this->generateLoginFormHTML($message);
     }
@@ -112,23 +123,35 @@ class LoginView{
      * Checks user import so the data is correct.
      */
     public function doRegister(){
-
+        loggHeader("Register check");
         $message = "Password miss match";
         if(!$this->wantToRegister() == true && $this->regFail==true){
             $message = "Enter Username and password";
+            loggThis("Empty string");
+            $this->logModel()->logToDB();
         }
         elseif($this->wantToRegister() ==true && $this->getUsername() == false || $this->getUsername()==''){
             $message="Empty username";
+            loggThis("Empty username");
+            $this->logModel()->logToDB();
         }elseif($this->wantToRegister() == true && $this->getPassword() =='') {
             $message="Empty password";
+            loggThis("Empty password");
+            $this->logModel()->logToDB();
         }elseif($this->wantToRegister() ==true && $this->getPassword() && $this->getRePassword() == false){
             $message = "Password miss match";
+            loggThis("Password miss match");
+            $this->logModel()->logToDB();
         }elseif($this->wantToRegister() ==true && $this->getPassword() === $this->getRePassword()){
            if($this->checkName() == true){
                $this->regFail =false;
                $message = "Register completed! Please use the new credentials";
+               loggThis("New user added");
+               $this->logModel()->logToDB();
            }else{
                $message = "Username is taken";
+               loggThis("Username is taken");
+               $this->logModel()->logToDB();
            }
         }
         echo $this->generateRegisterFormHTML($message);
@@ -140,7 +163,7 @@ class LoginView{
      * @return string
      */
     private function generateLoginFormHTML($message) {
-
+        loggHeader("Login page");
         echo ' ';
         echo $this->showRegisterButton();
         return '
@@ -276,5 +299,12 @@ class LoginView{
      */
     public function showBackButton(){
         echo "<a href='?" . self::$backButton. "'> Back</a>";
+    }
+    /**
+     * Fix to access LogModel
+     * @return \model\LogModel
+     */
+    public function logModel(){
+        return new \model\LogModel();
     }
 }

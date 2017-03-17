@@ -137,7 +137,7 @@ class view{
      * Shows the view where user can add a youtube video to the database
      */
     public function addView(){
-
+            loggThis("User accessed 'add video view'");
         echo '
 
 <!doctype html>
@@ -226,6 +226,7 @@ class view{
      */
     public function viewLogBTNClicked(){
         if((isset($_GET[self::$logViewBTN]))==true){
+            loggThis("User want to see logs");
             return true;
         }
     }
