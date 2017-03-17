@@ -1,0 +1,158 @@
+header, nav, main, footer, section{display: block;}
+body,html {
+    height: 100%;
+    margin:0;
+    padding:0;
+}
+.test{
+    height: 100%;
+
+}
+html{
+    width: 100%;
+}
+body{
+    background-color: transparent;
+    margin-top: 0px;
+}
+.header{
+    position: fixed;
+    top: 0;
+    opacity: 0.8;
+    background: transparent;
+    height: 8%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 15px #FFFFFF, 0 0 5px #000000;
+}
+.header:hover{
+    display: block;
+
+    opacity:0.8;
+}
+
+#wrapper{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 1;
+}
+#wrapper1{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 0;
+}
+#video{
+    position: fixed;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+iframe{
+    border: 0;
+    width:100%;
+    height:100%;
+    z-index: -99;
+}
+.aside-1 {
+    background: #000000;
+    color: black;
+    text-align: center;
+    text-shadow: 0 0 15px #FFFFFF, 0 0 5px #000000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    opacity: 0.3;
+}
+.aside-1:hover{
+    display: block;
+    opacity:1;
+    transition: opacity .2s ease-out;
+    -moz-transition: opacity .2s ease-out;
+    -webkit-transition: opacity .2s ease-out;
+    -o-transition: opacity .2s ease-out;
+}
+.addVideo{
+    clear:both;
+    display: block;
+    background-color: white;
+    opacity: 0.9;
+    float:left;
+    margin-top: 4%;
+    padding-bottom: -10%;
+    width: 100%;
+    height: 82.5%;
+
+}
+.addVideo h1{
+    text-align: center;
+}
+form{
+    float: right;
+    margin-right: 35%;
+    text-align: center;
+}
+input[type="text"]{
+    width: 600px;
+    height: 50px;
+
+}
+input[type="submit"]{
+    width: 600px;
+
+}
+p{
+    opacity: 1;
+    text-align: center;
+    color: red;
+}
+
+li a{
+    background-color: white;
+    z-index: 0;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    width: 120px;
+    height: 30px;
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 0;
+    padding-right: 0;
+    opacity: 1;
+}
+
+li a:link{
+    background-color: black;
+    color: white;
+}
+li a:visited{
+    background-color: black;
+    color: white;
+}
+li a:hover{
+    background-color: red;
+    color: black;
+    transition:0.5s;
+}
+li a:active{
+    background-color: gray;
+    color: black;
+}
+ol{
+    list-style-type: none;
+    margin-left: -40px;
+    overflow: hidden;
+    opacity: 1;
+}
+ol li{
+    list-style: none;
+    opacity: 1;
+    padding-right: 10px;
+
+    padding-top: -20px;
+    display: inline-block;
+}
