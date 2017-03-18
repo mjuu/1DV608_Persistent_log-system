@@ -62,7 +62,7 @@ class LogContView
      * Fix to access logModel
      * @return LogModel
      */
-    public function getLogModel()
+    public function LogModel()
     {
         return new LogModel();
     }
@@ -73,7 +73,7 @@ class LogContView
      */
     public function getIPfromDB()
     {
-        $IPfromDB = $this->getLogModel()->getIPfromDB();
+        $IPfromDB = $this->LogModel()->getIPfromDB();
         $result = "";
         foreach ($IPfromDB as $n => $value) {
             $result .= '<a href="?' . self::$showIP . $value . '">' . "$value" . '</a><br>';
@@ -87,7 +87,7 @@ class LogContView
      */
     public function getSessionfromDB()
     {
-        $sessionFromDB = $this->getLogModel()->getSessionFromDB();
+        $sessionFromDB = $this->LogModel()->getSessionFromDB();
         $result = "";
 
         foreach ($sessionFromDB as $n => $value) {
@@ -102,7 +102,7 @@ class LogContView
      */
     public function getTime()
     {
-        $timeItemFromDB = $this->getLogModel()->getTimeItemFromDB();
+        $timeItemFromDB = $this->LogModel()->getTimeItemFromDB();
         $result = "";
 
         foreach ($timeItemFromDB as $n => $value) {
@@ -120,7 +120,7 @@ class LogContView
         loggHeader("Accessing data from database");
         loggThis("Data access",null, true);
         $this->logModel()->logToDB();
-        $dataFromDB = $this->getLogModel()->getDataFromDB();
+        $dataFromDB = $this->LogModel()->getDataFromDB();
         $result = "";
         foreach ($dataFromDB as $n => $value) {
             $result .= $value;
